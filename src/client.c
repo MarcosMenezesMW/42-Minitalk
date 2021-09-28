@@ -6,7 +6,7 @@
 /*   By: mameneze <mameneze@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/12 18:11:03 by mameneze          #+#    #+#             */
-/*   Updated: 2021/09/28 20:11:40 by mameneze         ###   ########.fr       */
+/*   Updated: 2021/09/28 20:59:15 by mameneze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,20 @@
 static void	pass_char(int pid, unsigned char c)
 {
 	int	i;
+	int	result;
 
 	i = 0;
 	while (i <= 7)
 	{
 		if (c & (1 << i))
-			kill(pid, SIGUSR1);
+			result = kill(pid, SIGUSR1);
 		else
-			kill(pid, SIGUSR2);
+			result = kill(pid, SIGUSR2);
+		if (result == -1)
+		{
+			write(STDERR_FILENO, "Wrong PID\n", 11);
+			exit (1);
+		}
 		usleep(1500);
 		i++;
 	}

@@ -6,7 +6,7 @@
 /*   By: mameneze <mameneze@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/22 22:04:38 by mameneze          #+#    #+#             */
-/*   Updated: 2021/09/28 19:56:27 by mameneze         ###   ########.fr       */
+/*   Updated: 2021/09/28 20:44:40 by mameneze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 
 # include <signal.h>
 # include <unistd.h>
+# include <stdlib.h>
 
 void	ft_putstr(char *s);
 void	ft_putchar(char c);
