@@ -6,11 +6,17 @@
 /*   By: mameneze <mameneze@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/22 21:52:14 by mameneze          #+#    #+#             */
-/*   Updated: 2021/09/28 19:52:30 by mameneze         ###   ########.fr       */
+/*   Updated: 2021/09/28 20:22:27 by mameneze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minitalk.h"
+
+static void	print_and_send(siginfo_t *sa)
+{
+	write(STDOUT_FILENO, "\n", 1);
+	kill(sa->si_pid, SIGUSR1);
+}
 
 void	handler(int sig, siginfo_t *sa, void *context)
 {
@@ -20,7 +26,10 @@ void	handler(int sig, siginfo_t *sa, void *context)
 
 	(void)context;
 	if (count > 7)
+	{
 		count = 0;
+		c = 0;
+	}
 	mask = 1 << count;
 	if (sig == SIGUSR1)
 		c = c | mask;
@@ -30,10 +39,7 @@ void	handler(int sig, siginfo_t *sa, void *context)
 	if (count == 8)
 	{
 		if (c == 0)
-		{
-			write(STDOUT_FILENO, "\n", 1);
-			kill(sa->si_pid, SIGUSR1);
-		}
+			print_and_send(sa);
 		ft_putchar(c);
 	}
 	kill(sa->si_pid, SIGUSR2);
