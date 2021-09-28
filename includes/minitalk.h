@@ -6,7 +6,7 @@
 /*   By: mameneze <mameneze@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/22 22:04:38 by mameneze          #+#    #+#             */
-/*   Updated: 2021/09/26 20:13:11 by mameneze         ###   ########.fr       */
+/*   Updated: 2021/09/28 19:56:27 by mameneze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # define ERRARGC "Please inform the PID followed by the message to be sent.\n"
 
 # include <signal.h>
-# include <stdio.h>
 # include <unistd.h>
 
 void	ft_putstr(char *s);

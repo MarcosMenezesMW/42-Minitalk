@@ -6,7 +6,7 @@
 /*   By: mameneze <mameneze@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/12 18:11:03 by mameneze          #+#    #+#             */
-/*   Updated: 2021/09/27 22:48:09 by mameneze         ###   ########.fr       */
+/*   Updated: 2021/09/28 19:56:05 by mameneze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static int	get_pnumber(char *argv)
 static void	msg_confirmation(int sig)
 {
 	if (sig == SIGUSR1)
-		write(STDOUT_FILENO, "\nMessage received by Server!\n", 30);
+		write(STDOUT_FILENO, "Message received by Server!\n", 29);
 }
 
 int	main(int argc, char *argv[])
@@ -57,6 +57,7 @@ int	main(int argc, char *argv[])
 	if (argc != 3)
 		return (write(STDERR_FILENO, ERRARGC, 59), 0);
 	signal(SIGUSR1, msg_confirmation);
+	signal(SIGUSR2, msg_confirmation);
 	pid = get_pnumber(argv[1]);
 	if (!pid)
 		return (write(STDERR_FILENO, ERRARGC, 59), 0);

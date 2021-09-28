@@ -6,7 +6,7 @@
 /*   By: mameneze <mameneze@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/22 21:52:14 by mameneze          #+#    #+#             */
-/*   Updated: 2021/09/27 22:27:03 by mameneze         ###   ########.fr       */
+/*   Updated: 2021/09/28 19:52:30 by mameneze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,7 @@ void	handler(int sig, siginfo_t *sa, void *context)
 
 	(void)context;
 	if (count > 7)
-	{
 		count = 0;
-		c = 0;
-	}
 	mask = 1 << count;
 	if (sig == SIGUSR1)
 		c = c | mask;
@@ -39,6 +36,7 @@ void	handler(int sig, siginfo_t *sa, void *context)
 		}
 		ft_putchar(c);
 	}
+	kill(sa->si_pid, SIGUSR2);
 }
 
 int	main(void)
