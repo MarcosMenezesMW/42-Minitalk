@@ -6,7 +6,7 @@
 /*   By: mameneze <mameneze@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/12 18:11:03 by mameneze          #+#    #+#             */
-/*   Updated: 2021/09/28 21:13:34 by mameneze         ###   ########.fr       */
+/*   Updated: 2021/09/28 21:16:50 by mameneze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static void	pass_char(int pid, unsigned char c)
 			write(STDERR_FILENO, "Wrong PID\n", 11);
 			exit (1);
 		}
-		usleep(500);
+		usleep(50);
 		i++;
 	}
 }
@@ -57,7 +57,7 @@ static void	msg_confirmation(int sig)
 	if (sig == SIGUSR2)
 	{
 	}
-	usleep(500);
+	usleep(50);
 }
 
 int	main(int argc, char *argv[])
