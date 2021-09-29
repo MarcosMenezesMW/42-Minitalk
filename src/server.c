@@ -6,7 +6,7 @@
 /*   By: mameneze <mameneze@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/22 21:52:14 by mameneze          #+#    #+#             */
-/*   Updated: 2021/09/28 20:22:27 by mameneze         ###   ########.fr       */
+/*   Updated: 2021/09/28 22:04:07 by mameneze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,13 @@ void	handler(int sig, siginfo_t *sa, void *context)
 	kill(sa->si_pid, SIGUSR2);
 }
 
-int	main(void)
+int	main(int argc, char *argv[])
 {
 	int					pid;
 	struct sigaction	sa;
 
+	if (argc > 1 || !argv)
+		return (write(1, "Only one parameter is allowed\n", 31), 0);
 	sa.sa_sigaction = &handler;
 	sa.sa_flags = SA_SIGINFO;
 	pid = getpid();
