@@ -6,7 +6,7 @@
 /*   By: mameneze <mameneze@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/12 18:11:03 by mameneze          #+#    #+#             */
-/*   Updated: 2021/09/28 20:59:15 by mameneze         ###   ########.fr       */
+/*   Updated: 2021/09/28 21:07:31 by mameneze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,10 @@ static void	msg_confirmation(int sig)
 {
 	if (sig == SIGUSR1)
 		write(STDOUT_FILENO, "Message received by Server!\n", 29);
+	if (sig == SIGUSR2)
+	{
+	}
+	usleep(500);
 }
 
 int	main(int argc, char *argv[])
